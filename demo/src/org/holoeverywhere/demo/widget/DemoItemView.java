@@ -14,24 +14,24 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 
-public class DemoListRowView extends LinearLayout {
+public class DemoItemView extends LinearLayout {
     private final TextView label;
     private final View selectionHandler;
 
-    public DemoListRowView(Context context) {
+    public DemoItemView(Context context) {
         this(context, null);
     }
 
-    public DemoListRowView(Context context, AttributeSet attrs) {
+    public DemoItemView(Context context, AttributeSet attrs) {
         this(context, attrs, R.attr.demoListRowViewStyle);
     }
 
     @SuppressWarnings("deprecation")
-    public DemoListRowView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public DemoItemView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DemoListRowView,
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DemoItemView,
                 defStyleAttr, R.style.Holo_Demo_ListRowView);
-        final int gravity = a.getInt(R.styleable.DemoListRowView_android_gravity, Gravity.LEFT), layout;
+        final int gravity = a.getInt(R.styleable.DemoItemView_android_gravity, Gravity.LEFT), layout;
         if ((gravity & Gravity.LEFT) != 0) {
             layout = R.layout.demo_list_row_view_left;
         } else {
@@ -40,18 +40,18 @@ public class DemoListRowView extends LinearLayout {
         LayoutInflater.inflate(context, layout, this, true);
         selectionHandler = findViewById(R.id.selectionHandler);
         label = (TextView) findViewById(android.R.id.text1);
-        if (a.hasValue(R.styleable.DemoListRowView_android_text)) {
-            setLabel(a.getText(R.styleable.DemoListRowView_android_text));
+        if (a.hasValue(R.styleable.DemoItemView_android_text)) {
+            setLabel(a.getText(R.styleable.DemoItemView_android_text));
         }
-        if (a.hasValue(R.styleable.DemoListRowView_selectionHandler)) {
-            setSelectionHandlerDrawable(a.getDrawable(R.styleable.DemoListRowView_selectionHandler));
+        if (a.hasValue(R.styleable.DemoItemView_selectionHandler)) {
+            setSelectionHandlerDrawable(a.getDrawable(R.styleable.DemoItemView_selectionHandler));
         }
-        if (a.hasValue(R.styleable.DemoListRowView_selectionHandlerVisiblity)) {
+        if (a.hasValue(R.styleable.DemoItemView_selectionHandlerVisiblity)) {
             setSelectionHandlerVisiblity(a.getInt(
-                    R.styleable.DemoListRowView_selectionHandlerVisiblity, 0) == 0);
+                    R.styleable.DemoItemView_selectionHandlerVisiblity, 0) == 0);
         }
-        if (a.hasValue(R.styleable.DemoListRowView_android_background)) {
-            setBackgroundDrawable(a.getDrawable(R.styleable.DemoListRowView_android_background));
+        if (a.hasValue(R.styleable.DemoItemView_android_background)) {
+            setBackgroundDrawable(a.getDrawable(R.styleable.DemoItemView_android_background));
         }
         a.recycle();
     }

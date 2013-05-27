@@ -77,7 +77,7 @@ public class Fragment extends _HoloFragment {
     @Override
     public LayoutInflater getLayoutInflater() {
         if (mLayoutInflater == null) {
-            mLayoutInflater = getSupportActivity().getLayoutInflater().
+            mLayoutInflater = getSupportActivity().getThemedLayoutInflater().
                     obtainFragmentChildInflater(this);
         }
         return mLayoutInflater;

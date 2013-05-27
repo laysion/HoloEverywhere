@@ -60,7 +60,7 @@ public class OtherFragment extends ListFragment {
         public void onClick(OtherItem otherItem);
     }
 
-    private static final class OtherAdapter extends DemoAdapter {
+    private static final class OtherAdapter extends DemoAdapter<DemoItem> {
         public OtherAdapter(Context context) {
             super(context);
         }

@@ -10,7 +10,7 @@
     </attr>
     <attr name="titleLayout" format="reference"/>
     <!--Start styleable definition block-->
-    <declare-styleable name="DemoListRowView">
+    <declare-styleable name="DemoItemView">
         <attr name="android:background"/>
         <attr name="android:gravity"/>
         <attr name="android:text"/>

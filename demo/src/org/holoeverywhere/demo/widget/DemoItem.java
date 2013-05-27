@@ -2,7 +2,6 @@
 package org.holoeverywhere.demo.widget;
 
 import org.holoeverywhere.FontLoader;
-import org.holoeverywhere.demo.R;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ public class DemoItem {
     public CharSequence label;
     public View lastView;
     public boolean longClickable = false;
-    public int selectionHandlerColor = -1;
+    public int selectionHandlerColor = 0;
     public boolean selectionHandlerVisible = false;
 
     public DemoItem() {
@@ -23,24 +22,20 @@ public class DemoItem {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        DemoListRowView view = makeView(convertView, parent);
+        DemoItemView view = makeView(convertView, parent);
         view.setLabel(label);
         view.setSelectionHandlerVisiblity(selectionHandlerVisible);
         if (selectionHandlerVisible) {
-            if (selectionHandlerColor > 0) {
-                view.setSelectionHandlerColor(selectionHandlerColor);
-            } else {
-                view.setSelectionHandlerColorResource(R.color.transparent);
-            }
+            view.setSelectionHandlerColor(selectionHandlerColor);
         }
         return view;
     }
 
-    protected DemoListRowView makeView(View convertView, ViewGroup parent) {
+    protected DemoItemView makeView(View convertView, ViewGroup parent) {
         if (convertView == null) {
-            return FontLoader.apply(new DemoListRowView(parent.getContext()));
+            return FontLoader.apply(new DemoItemView(parent.getContext()));
         } else {
-            return (DemoListRowView) convertView;
+            return (DemoItemView) convertView;
         }
     }
 

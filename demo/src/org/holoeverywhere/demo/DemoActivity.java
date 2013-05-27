@@ -21,7 +21,20 @@ import com.actionbarsherlock.view.MenuItem;
 
 @Addons(Activity.ADDON_SLIDER)
 public class DemoActivity extends Activity implements OnBackStackChangedListener {
+    public static void printViewHierarchy(ViewGroup vg, String prefix) {
+        for (int i = 0; i < vg.getChildCount(); i++) {
+            View v = vg.getChildAt(i);
+            String desc = prefix + "| " + "[" + i + "/" + (vg.getChildCount() - 1) + "] "
+                    + v.getClass().getSimpleName() + " " + v.getId();
+            Log.v("POPKA", desc);
+            if (v instanceof ViewGroup) {
+                printViewHierarchy((ViewGroup) v, "  " + prefix);
+            }
+        }
+    }
+
     private MenuFragment mMenuFragment;
+
     private boolean mStaticMenu;
 
     public AddonSliderA addonSlider() {
@@ -98,18 +111,6 @@ public class DemoActivity extends Activity implements OnBackStackChangedListener
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
         printViewHierarchy((ViewGroup) getWindow().getDecorView(), "");
-    }
-
-    public static void printViewHierarchy(ViewGroup vg, String prefix) {
-        for (int i = 0; i < vg.getChildCount(); i++) {
-            View v = vg.getChildAt(i);
-            String desc = prefix + "| " + "[" + i + "/" + (vg.getChildCount() - 1) + "] "
-                    + v.getClass().getSimpleName() + " " + v.getId();
-            Log.v("POPKA", desc);
-            if (v instanceof ViewGroup) {
-                printViewHierarchy((ViewGroup) v, "  " + prefix);
-            }
-        }
     }
 
     public void setOnMenuClickListener(OnMenuClickListener onMenuClickListener) {

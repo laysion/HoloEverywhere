@@ -77,7 +77,7 @@ public class DemoThemePicker extends FrameLayout {
             return;
         }
         mActivity = activity;
-        ((DemoListRowView) findViewById(THEME_HASHTABLE.get(ThemeManager.getTheme(activity)
+        ((DemoItemView) findViewById(THEME_HASHTABLE.get(ThemeManager.getTheme(activity)
                 & ThemeManager.COLOR_SCHEME_MASK))).setSelectionHandlerVisiblity(true);
     }
 }

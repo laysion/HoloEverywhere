@@ -11,7 +11,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 
-public class DemoAdapter extends ArrayAdapter<DemoItem> implements OnItemClickListener,
+public class DemoAdapter<T extends DemoItem> extends ArrayAdapter<T> implements
+        OnItemClickListener,
         OnItemLongClickListener {
     public DemoAdapter(Context context) {
         super(context, 0);
@@ -34,7 +35,7 @@ public class DemoAdapter extends ArrayAdapter<DemoItem> implements OnItemClickLi
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-        DemoItem item = getItem(position - ((ListView) adapterView).getHeaderViewsCount());
+        T item = getItem(position - ((ListView) adapterView).getHeaderViewsCount());
         item.lastView = view;
         item.onClick();
         item.lastView = null;
@@ -42,7 +43,7 @@ public class DemoAdapter extends ArrayAdapter<DemoItem> implements OnItemClickLi
 
     @Override
     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-        DemoItem item = getItem(position - ((ListView) adapterView).getHeaderViewsCount());
+        T item = getItem(position - ((ListView) adapterView).getHeaderViewsCount());
         if (item.longClickable) {
             item.lastView = view;
             boolean result = item.onLongClick();

@@ -6,7 +6,7 @@
 	],
 	"styleable": {
 		"WidgetContainer": "titleLayout$reference/android:text/android:layout",
-		"DemoListRowView": [
+		"DemoItemView": [
 		    "android:text",
 		    "selectionHandler$color|reference",
 		    "selectionHandlerVisiblity/visible 0/invisible 1",
